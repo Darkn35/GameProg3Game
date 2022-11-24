@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class SleepTimer : MonoBehaviour
 {
-    [SerializeField] PlayerMovement player;
-    [SerializeField] WinBehavior winBehavior;
+    [SerializeField] private PlayerMovement player;
+    [SerializeField] private WinBehavior winBehavior;
     public Slider slider;
     public float sleepTime;
     public float sleepTimeMultiplier;

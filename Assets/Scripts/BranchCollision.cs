@@ -26,10 +26,15 @@ public class BranchCollision : MonoBehaviour
                     boxCollider.isTrigger = true;
                     return;
                 }
+
+                if (hitPos.normal.y < 0)
+                {
+                    UIFade.ShowUI();
+                    timeSlider.StartTime();
+                    timeSlider.sleepTimeMultiplier = timeMultiplier;
+                    return;
+                }
             }
-            UIFade.ShowUI();
-            timeSlider.StartTime();
-            timeSlider.sleepTimeMultiplier = timeMultiplier;
         }
     }
 
