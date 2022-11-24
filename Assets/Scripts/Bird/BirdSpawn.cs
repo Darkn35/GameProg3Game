@@ -78,13 +78,7 @@ public class BirdSpawn : MonoBehaviour
     void MoveToPos(float x, float y, GameObject[] gameObject, int index)
     {
         gameObject[index].transform.position = new Vector3(x, y, 0);
-        if (isFacingLeft)
-        {
-            gameObject[index].GetComponent<BirdMovement>().isFacingLeft = true;
-        }
-        else
-        {
-            gameObject[index].GetComponent<BirdMovement>().isFacingLeft = false;
-        }
+
+        gameObject[index].GetComponent<BirdMovement>().isFacingLeft = isFacingLeft;
     }
 }

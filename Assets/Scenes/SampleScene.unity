@@ -1844,6 +1844,8 @@ MonoBehaviour:
   posUp: {fileID: 1615904862}
   posDown: {fileID: 816557091}
   isFacingLeft: 0
+  minDelay: 1
+  maxDelay: 5
   birdObjects:
   - {fileID: 1588160516}
   - {fileID: 147093370}
@@ -1853,8 +1855,6 @@ MonoBehaviour:
   - {fileID: 1509031144}
   - {fileID: 549842065}
   - {fileID: 2120528251}
-  minDelay: 1
-  maxDelay: 5
 --- !u!1 &1097050454
 GameObject:
   m_ObjectHideFlags: 0
