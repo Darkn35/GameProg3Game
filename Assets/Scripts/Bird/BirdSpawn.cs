@@ -39,7 +39,6 @@ public class BirdSpawn : MonoBehaviour
             {
                 birdObjects[i].SetActive(true);
                 MoveToPos(ChoosePosX(), ChoosePosY(), birdObjects, i);
-
             }
             yield return wait;
         }

@@ -6,9 +6,10 @@ public class BranchCollision : MonoBehaviour
 {
     [SerializeField] private SleepTimer timeSlider;
     [SerializeField] private UIFadeInOut UIFade;
+    [SerializeField] private FruitListIndex fruitList;
     private BoxCollider2D boxCollider;
+    private bool canSleep = true;
 
-    public float timeMultiplier = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,14 +30,46 @@ public class BranchCollision : MonoBehaviour
 
                 if (hitPos.normal.y < 0)
                 {
-                    UIFade.ShowUI();
-                    timeSlider.StartTime();
-                    timeSlider.sleepTimeMultiplier = timeMultiplier;
+                    if (canSleep)
+                    {
+                        UIFade.ShowUI();
+                        timeSlider.StartTime();
+                    }
+                    else
+                    {
+                        UIFade.HideUI();
+                        timeSlider.ResetTime();
+                        Debug.Log("Can't sleep");
+                    }
                     return;
                 }
             }
         }
+        if (collision.gameObject.tag.Equals("EInteractable"))
+        {
+            fruitList.fruit[fruitList.listIndex(collision)].onBranch = true;
+            if (fruitList.fruit[fruitList.listIndex(collision)].isMushroom)
+            {
+                canSleep = false;
+                //UIFade.HideUI();
+                //timeSlider.ResetTime();
+            }
+        }
     }
+
+    //private void OnCollisionStay2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.tag.Equals("EInteractable"))
+    //    {
+    //        fruitList.fruit[fruitList.listIndex(collision)].onBranch = true;
+    //        if (fruitList.fruit[fruitList.listIndex(collision)].isMushroom)
+    //        {
+    //            canSleep = false;
+    //            UIFade.HideUI();
+    //            timeSlider.ResetTime();
+    //        }
+    //    }
+    //}
 
     private void OnTriggerExit2D(Collider2D collision)
     {
@@ -52,6 +85,15 @@ public class BranchCollision : MonoBehaviour
         {
             UIFade.HideUI();
             timeSlider.ResetTime();
+        }
+
+        if (collision.gameObject.tag.Equals("EInteractable"))
+        {
+            fruitList.fruit[fruitList.listIndex(collision)].onBranch = false;
+            if (fruitList.fruit[fruitList.listIndex(collision)].isMushroom)
+            {
+                canSleep = true;
+            }
         }
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BirdFadeInAndOut : MonoBehaviour
+public class SpriteFade : MonoBehaviour
 {
     [SerializeField] private SpriteRenderer spriteRenderer;
 

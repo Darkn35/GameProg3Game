@@ -2,13 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BirdLifeSpan : MonoBehaviour
+public class ObjectTimer : MonoBehaviour
 {
-    [SerializeField] private BirdFadeInAndOut birdFade;
-    public GameObject birdGameObject;
+    [SerializeField] private SpriteFade objectFade;
+    [SerializeField] private ObjectBehavior objBehavior;
+    [SerializeField] private bool isFading;
+    [SerializeField] private FallingObjectsSpawn objectsSpawn;
+    public GameObject gameObj;
     public float timeToDisappear;
     public float totalTime;
-    [SerializeField] private bool isFading;
+    public bool isInteractable;
 
     // Start is called before the first frame update
     void Start()
@@ -16,10 +19,16 @@ public class BirdLifeSpan : MonoBehaviour
         Init();
     }
 
-    void Init()
+    public void Init()
     {
         totalTime = timeToDisappear;
         isFading = false;
+
+        if (isInteractable)
+        {
+            objBehavior.Init();
+            //objectsSpawn.SpawnObject();
+        }
     }
 
     // Update is called once per frame
@@ -30,14 +39,14 @@ public class BirdLifeSpan : MonoBehaviour
         if (totalTime <= 1f && !isFading)
         {
             isFading = true;
-            StartCoroutine(birdFade.FadeOut());
+            StartCoroutine(objectFade.FadeOut());
         }
 
         if (totalTime <= 0)
         {
             Init();
-            birdFade.ResetVal();
-            birdGameObject.SetActive(false);
+            objectFade.ResetVal();
+            gameObj.SetActive(false);
         }
     }
 }

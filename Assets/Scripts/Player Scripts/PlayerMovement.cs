@@ -16,6 +16,9 @@ public class PlayerMovement : MonoBehaviour
     private PlayerCollision playerCollision;
     private PlayerAnimations playerAnim;
 
+    public Transform interactionBox;
+    public float offset;
+
     public float movementSpeed = 20.0f;
     // Start is called before the first frame update
     void Start()
@@ -54,13 +57,15 @@ public class PlayerMovement : MonoBehaviour
 
     void FlipSprite() // Will optimize later when assets are created
     {
-        if (horizontal > 0 && (playerCollision.isGrounded)) 
+        if (horizontal > 0 && playerCollision.isGrounded) 
         {
+            interactionBox.position = transform.position + new Vector3(offset, 0, 0);
             spriteRenderer.flipX = false;
             return;
         }
-        else if (horizontal < 0 && (playerCollision.isGrounded))
+        else if (horizontal < 0 && playerCollision.isGrounded)
         {
+            interactionBox.position = transform.position - new Vector3(offset, 0, 0);
             spriteRenderer.flipX = true;
             return;
         }

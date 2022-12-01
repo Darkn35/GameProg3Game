@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 public class WinBehavior : MonoBehaviour
 {
     public GameObject levelWinText;
+    public GameObject levelLoseText;
+    public string nextLevelName;
     public string levelName;
     public float seconds;
     // Start is called before the first frame update
@@ -24,18 +26,20 @@ public class WinBehavior : MonoBehaviour
     {
         levelWinText.SetActive(true);
         //Invoke("GoToNextLevel", 2);
-        StartCoroutine(TimeDelay(seconds));
+        StartCoroutine(TimeDelay(seconds, nextLevelName));
     }
 
-    IEnumerator TimeDelay(float secs)
+    public void Lose()
+    {
+        levelLoseText.SetActive(true);
+        //Invoke("GoToNextLevel", 2);
+        StartCoroutine(TimeDelay(seconds, levelName));
+    }
+
+    IEnumerator TimeDelay(float secs, string level)
     {
         yield return new WaitForSeconds(secs);
-        GoToNextLevel();
-    }
+        SceneManager.LoadScene(level);
 
-    void GoToNextLevel()
-    {
-        SceneManager.LoadScene(levelName);
-        Debug.Log("yuor did it!");
     }
 }
