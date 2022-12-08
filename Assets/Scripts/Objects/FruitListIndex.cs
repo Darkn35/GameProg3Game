@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FruitListIndex : MonoBehaviour
 {
+    // Not Used at the moment.
     [SerializeField] public List<ObjectBehavior> fruit = new List<ObjectBehavior>();
     private int index;
 

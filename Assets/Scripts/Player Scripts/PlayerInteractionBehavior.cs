@@ -6,7 +6,7 @@ public class PlayerInteractionBehavior : MonoBehaviour
 {
     [SerializeField] private UIFadeInOut fadeInOut;
     [SerializeField] private PlayerCollision playerCollision;
-    [SerializeField] private FruitListIndex fruitList;
+    //[SerializeField] private FruitListIndex fruitList;
 
     // Start is called before the first frame update
     void Start()
@@ -24,10 +24,10 @@ public class PlayerInteractionBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("EInteractable") && playerCollision.isGrounded)
         {
-            if (fruitList.fruit[fruitList.listIndexTrig(collision)].onBranch && fruitList.fruit[fruitList.listIndexTrig(collision)].isFruit)
+            if (collision.gameObject.GetComponent<ObjectBehavior>().onBranch && collision.gameObject.GetComponent<ObjectBehavior>().isFruit)
             {
                 fadeInOut.ShowUI();
-                fruitList.fruit[fruitList.listIndexTrig(collision)].isInteractable = true;
+                collision.gameObject.GetComponent<ObjectBehavior>().isInteractable = true;
 
             }
         }
@@ -37,10 +37,10 @@ public class PlayerInteractionBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("EInteractable"))
         {
-            if (fruitList.fruit[fruitList.listIndexTrig(collision)].onBranch)
+            if (collision.gameObject.GetComponent<ObjectBehavior>().onBranch)
             {
                 fadeInOut.HideUI();
-                fruitList.fruit[fruitList.listIndexTrig(collision)].isInteractable = false;
+                collision.gameObject.GetComponent<ObjectBehavior>().isInteractable = false;
             }
         }
     }

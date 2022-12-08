@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class BirdSpawn : MonoBehaviour
 {
+    [Header("X/Y Axis Spawn Settings")]
     public Transform posLeft;
     public Transform posRight;
     public Transform posUp;
     public Transform posDown;
 
-    public bool isFacingLeft;
-
+    [Header("Settings")]
     public float minDelay;
     public float maxDelay;
+    public bool isFacingLeft;
 
+    [Header("Array of Bird Objects")]
     public GameObject[] birdObjects;
 
     // Start is called before the first frame update

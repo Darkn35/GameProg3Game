@@ -23,6 +23,10 @@ public class ObjectBehavior : MonoBehaviour
 
     public void Init()
     {
+        GameObject player = GameObject.Find("Player");
+        sleepTimer = player.GetComponentInChildren<SleepTimer>();
+        buttonUI = player.GetComponentInChildren<PlayerInteractionBehavior>();
+
         isInteractable = false;
         canBePicked = false;
         isGrabbed = false;
@@ -35,7 +39,7 @@ public class ObjectBehavior : MonoBehaviour
     {
         if (!isFruit && !isMushroom)
         {
-
+            // branches, etc.
         }
         else
         {
@@ -67,8 +71,9 @@ public class ObjectBehavior : MonoBehaviour
     void ConsumeFruit()
     {
         sleepTimer.sleepTimeMultiplier = sleepMultiplier;
-        this.GetComponent<ObjectTimer>().Init();
-        this.gameObject.SetActive(false);
+        //this.GetComponent<ObjectTimer>().Init();
+        //this.gameObject.SetActive(false);
+        Destroy(this.gameObject);
     }
 
     private void OnCollisionStay2D(Collision2D collision)

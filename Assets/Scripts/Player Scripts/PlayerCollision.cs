@@ -6,7 +6,7 @@ public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private PlayerAnimations playerAnimations;
     [SerializeField] private SleepTimer timeSlider;
-    [SerializeField] private FruitListIndex fruitList;
+    //[SerializeField] private FruitListIndex fruitList;
     [SerializeField] private PlayerInteractionBehavior buttonUI;
     public bool isGrounded;
 
@@ -22,29 +22,26 @@ public class PlayerCollision : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag.Equals("Ground") || collision.gameObject.tag.Equals("Branch"))
-        {
-            playerAnimations.SetAnimStateBool("isIdle", true);
-            playerAnimations.SetAnimStateBool("isFlying", false);
-            playerAnimations.SetAnimStateBool("isDiving", false);
-            isGrounded = true;
-        }
+        
+    }
 
-        if (collision.gameObject.tag.Equals("EInteractable"))
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        foreach (ContactPoint2D hitPos in collision.contacts)
         {
-            foreach (ContactPoint2D hitPos in collision.contacts)
-            { 
-                if (hitPos.normal.y > 0)
+            if (hitPos.normal.y > 0)
+            {
+                if (collision.gameObject.tag.Equals("EInteractable"))
                 {
-                    playerAnimations.SetAnimStateBool("isIdle", true);
-                    playerAnimations.SetAnimStateBool("isFlying", false);
-                    playerAnimations.SetAnimStateBool("isDiving", false);
-                    isGrounded = true;
-
-                    fruitList.fruit[fruitList.listIndex(collision)].canBePicked = true;
+                    collision.gameObject.GetComponent<ObjectBehavior>().canBePicked = true;
                     buttonUI.ShowUIButton();
+
                     return;
                 }
+                playerAnimations.SetAnimStateBool("isIdle", true);
+                playerAnimations.SetAnimStateBool("isFlying", false);
+                playerAnimations.SetAnimStateBool("isDiving", false);
+                isGrounded = true;
             }
         }
     }
@@ -57,7 +54,7 @@ public class PlayerCollision : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("EInteractable"))
         {
-            fruitList.fruit[fruitList.listIndex(collision)].canBePicked = false;
+            collision.gameObject.GetComponent<ObjectBehavior>().canBePicked = false;
             buttonUI.HideUIButton();
         }
     }

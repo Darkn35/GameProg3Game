@@ -8,6 +8,7 @@ TagManager:
   - Branch
   - Enemy
   - EInteractable
+  - Nut
   layers:
   - Default
   - TransparentFX

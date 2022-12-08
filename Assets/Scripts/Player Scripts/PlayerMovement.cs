@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     float moveLimit = 0.7f;
 
     public bool isMoving;
-    private bool isDiving;
+    private bool isFacingLeft = false;
 
     Rigidbody2D body;
     private SpriteRenderer spriteRenderer;
@@ -27,7 +27,6 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerCollision = GetComponent<PlayerCollision>();
         playerAnim = GetComponent<PlayerAnimations>();
-        isDiving = false;
     }
 
     // Update is called once per frame
@@ -45,49 +44,35 @@ public class PlayerMovement : MonoBehaviour
         if (!playerCollision.isGrounded && vertical < 0)
         {
             playerAnim.SetAnimStateBool("isDiving", true);
-            isDiving = true;
         }
         else if (!playerCollision.isGrounded && vertical >= 0)
         {
             playerAnim.SetAnimStateBool("isFlying", true);
             playerAnim.SetAnimStateBool("isDiving", false);
-            isDiving = false;
         }
     }
 
     void FlipSprite() // Will optimize later when assets are created
     {
-        if (horizontal > 0 && playerCollision.isGrounded) 
-        {
-            interactionBox.position = transform.position + new Vector3(offset, 0, 0);
-            spriteRenderer.flipX = false;
-            return;
-        }
-        else if (horizontal < 0 && playerCollision.isGrounded)
-        {
-            interactionBox.position = transform.position - new Vector3(offset, 0, 0);
-            spriteRenderer.flipX = true;
-            return;
-        }
-
-        if (horizontal > 0 && isDiving)
-        {
-            spriteRenderer.flipX = false;
-            return;
-        }
-        else if (horizontal < 0 && isDiving)
-        {
-            spriteRenderer.flipX = true;
-            return;
-        }
-
-        if (horizontal > 0)
+        if (isFacingLeft)
         {
             spriteRenderer.flipX = true;
         }
         else
         {
             spriteRenderer.flipX = false;
+        }
+
+
+        if (horizontal > 0)
+        {
+            interactionBox.position = transform.position + new Vector3(offset, 0, 0);
+            isFacingLeft = false;
+        }
+        else if (horizontal < 0)
+        {
+            interactionBox.position = transform.position - new Vector3(offset, 0, 0);
+            isFacingLeft = true;
         }
     }
 
