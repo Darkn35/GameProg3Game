@@ -8,8 +8,9 @@ public class BranchCollision : MonoBehaviour
     [SerializeField] private UIFadeInOut UIFade;
     //[SerializeField] private FruitListIndex fruitList;
     private BoxCollider2D boxCollider;
-    private bool canSleep = true;
-    private bool isPlayerHere;
+    public bool canSleep;
+    public bool isPlayerHere;
+    private bool isCarrying;
 
     // Start is called before the first frame update
     void Start()
@@ -39,10 +40,11 @@ public class BranchCollision : MonoBehaviour
                 }
             }
         }
+
         if (collision.gameObject.tag.Equals("EInteractable"))
         {
             collision.gameObject.GetComponent<ObjectBehavior>().onBranch = true;
-            if (collision.gameObject.GetComponent<ObjectBehavior>().onBranch)
+            if (collision.gameObject.GetComponent<ObjectBehavior>().onBranch && collision.gameObject.GetComponent<ObjectBehavior>().isMushroom)
             {
                 if (isPlayerHere)
                 {
@@ -50,7 +52,6 @@ public class BranchCollision : MonoBehaviour
                     UIFade.HideUI();
                     timeSlider.ResetTime();
                 }
-
             }
         }
     }
@@ -79,12 +80,43 @@ public class BranchCollision : MonoBehaviour
                 }
             }
         }
+
+        if (collision.gameObject.tag.Equals("Negotiable"))
+        {
+            Debug.Log("sdadasda");
+            canSleep = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("EInteractable"))
+        {
+            if (collision.gameObject.GetComponent<HingeJoint2D>() != null)
+            {
+                Debug.Log("hinge joint detected");
+                isCarrying = true;
+            }
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag.Equals("Player"))
         {
+            if (isCarrying)
+            {
+                return;
+            }
+            else
+            {
+                boxCollider.isTrigger = false;
+            }
+        }
+
+        if (collision.gameObject.tag.Equals("EInteractable") && isCarrying)
+        {
+            isCarrying = false;
             boxCollider.isTrigger = false;
         }
     }
@@ -105,6 +137,11 @@ public class BranchCollision : MonoBehaviour
             {
                 canSleep = true;
             }
+        }
+
+        if (collision.gameObject.tag.Equals("Negotiable"))
+        {
+            canSleep = true;
         }
     }
 }

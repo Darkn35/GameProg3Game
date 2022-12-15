@@ -10,6 +10,7 @@ public class ObjectBehavior : MonoBehaviour
     public bool onBranch;
     public bool isFruit;
     public bool isMushroom;
+    public bool isNut;
 
     public float sleepMultiplier;
     [SerializeField] private SleepTimer sleepTimer;
@@ -37,7 +38,7 @@ public class ObjectBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isFruit && !isMushroom)
+        if (!isFruit && !isMushroom && !isNut)
         {
             // branches, etc.
         }
@@ -70,7 +71,7 @@ public class ObjectBehavior : MonoBehaviour
 
     void ConsumeFruit()
     {
-        sleepTimer.sleepTimeMultiplier = sleepMultiplier;
+        sleepTimer.itemTimeMultiplier = sleepMultiplier;
         //this.GetComponent<ObjectTimer>().Init();
         //this.gameObject.SetActive(false);
         Destroy(this.gameObject);

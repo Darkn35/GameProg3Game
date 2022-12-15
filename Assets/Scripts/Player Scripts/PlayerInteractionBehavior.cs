@@ -22,13 +22,15 @@ public class PlayerInteractionBehavior : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("EInteractable") && playerCollision.isGrounded)
+        if (playerCollision.isGrounded)
         {
-            if (collision.gameObject.GetComponent<ObjectBehavior>().onBranch && collision.gameObject.GetComponent<ObjectBehavior>().isFruit)
+            if (collision.gameObject.tag.Equals("EInteractable"))
             {
-                fadeInOut.ShowUI();
-                collision.gameObject.GetComponent<ObjectBehavior>().isInteractable = true;
-
+                if (collision.gameObject.GetComponent<ObjectBehavior>().onBranch && collision.gameObject.GetComponent<ObjectBehavior>().isFruit)
+                {
+                    fadeInOut.ShowUI();
+                    collision.gameObject.GetComponent<ObjectBehavior>().isInteractable = true;
+                }
             }
         }
     }

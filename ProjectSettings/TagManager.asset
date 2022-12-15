@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - EInteractable
   - Nut
+  - Predator
+  - Negotiable
   layers:
   - Default
   - TransparentFX

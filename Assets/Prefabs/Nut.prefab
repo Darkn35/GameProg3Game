@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3840839555556364649}
   m_Layer: 0
   m_Name: Nut
-  m_TagString: Nut
+  m_TagString: EInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -209,6 +209,7 @@ MonoBehaviour:
   onBranch: 0
   isFruit: 0
   isMushroom: 0
+  isNut: 1
   sleepMultiplier: 0
   sleepTimer: {fileID: 0}
   buttonUI: {fileID: 0}
@@ -241,7 +242,7 @@ MonoBehaviour:
   objBehavior: {fileID: 3840839555556364648}
   isFading: 0
   gameObj: {fileID: 3840839555556364647}
-  timeToDisappear: 10
+  timeToDisappear: 20
   totalTime: 0
-  isInteractable: 0
+  isInteractable: 1
   objectName: Interactable
