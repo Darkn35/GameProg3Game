@@ -39,7 +39,7 @@ public class PlayerInteractionBehavior : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("EInteractable"))
         {
-            if (collision.gameObject.GetComponent<ObjectBehavior>().onBranch)
+            if (collision.gameObject.GetComponent<ObjectBehavior>().isFruit)
             {
                 fadeInOut.HideUI();
                 collision.gameObject.GetComponent<ObjectBehavior>().isInteractable = false;

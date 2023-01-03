@@ -29,4 +29,14 @@ public class PlayerAnimations : MonoBehaviour
     {
         playerAnim.SetBool(anim, isTrue);
     }
+
+    public void ScaredAnimLeft()
+    {
+        this.gameObject.GetComponent<Transform>().Translate(-0.05f, 0, 0);
+    }
+
+    public void ScaredAnimRight()
+    {
+        this.gameObject.GetComponent<Transform>().Translate(+0.05f, 0, 0);
+    }
 }

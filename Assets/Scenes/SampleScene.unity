@@ -276,6 +276,7 @@ GameObject:
   - component: {fileID: 136205616}
   - component: {fileID: 136205615}
   - component: {fileID: 136205621}
+  - component: {fileID: 136205622}
   m_Layer: 0
   m_Name: bird (3)
   m_TagString: Enemy
@@ -423,7 +424,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136205613}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -444,6 +445,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTime: 0
   maxTime: 3
+--- !u!114 &136205622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136205613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63706161fa903349af5527b98417fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &144724529
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,7 +790,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 299589424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.8870134, y: 0.07400405, z: -9.160818}
+  m_LocalPosition: {x: 6.8870134, y: 0.07400405, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -944,7 +957,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 384256328}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.6997299, y: 2.2693167, z: -0.9714831}
+  m_LocalPosition: {x: 1.6997299, y: 2.2693167, z: 0}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2055,6 +2068,7 @@ MonoBehaviour:
   timeSlider: {fileID: 1223279814}
   buttonUI: {fileID: 263504051}
   isGrounded: 0
+  isScared: 0
 --- !u!114 &792321678
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2081,7 +2095,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.05615425, y: 0.4489324}
+  m_Offset: {x: 0, y: 0.40453148}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2092,7 +2106,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.625643, y: 14.115471}
+  m_Size: {x: 10, y: 14.690937}
   m_EdgeRadius: 0
 --- !u!1 &816557090
 GameObject:
@@ -2140,6 +2154,7 @@ GameObject:
   - component: {fileID: 840582434}
   - component: {fileID: 840582433}
   - component: {fileID: 840582438}
+  - component: {fileID: 840582439}
   m_Layer: 0
   m_Name: bird (2)
   m_TagString: Enemy
@@ -2155,7 +2170,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840582430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -2308,6 +2323,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTime: 0
   maxTime: 3
+--- !u!114 &840582439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840582430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63706161fa903349af5527b98417fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &864167281
 GameObject:
   m_ObjectHideFlags: 0
@@ -3078,6 +3105,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef4b2e851881c349928ca4c7a644451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnim: {fileID: 792321678}
+  playerCol: {fileID: 792321677}
   timeSlider: {fileID: 1223279814}
   UIFade: {fileID: 1223279815}
   canSleep: 1
@@ -3397,7 +3426,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1367150868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.368458, y: -2.4274178, z: 1}
+  m_LocalPosition: {x: 13.368458, y: -2.4274178, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3417,6 +3446,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1374880933}
   - component: {fileID: 1374880934}
+  - component: {fileID: 1374880935}
   m_Layer: 0
   m_Name: Predator Trigger Collider
   m_TagString: Enemy
@@ -3469,6 +3499,18 @@ PolygonCollider2D:
       - {x: -0.6186593, y: -0.3635453}
       - {x: 0.57680446, y: -0.3639353}
       - {x: 0.61710024, y: 0.98061836}
+--- !u!114 &1374880935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1374880932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63706161fa903349af5527b98417fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1523189658
 GameObject:
   m_ObjectHideFlags: 0
@@ -3593,6 +3635,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef4b2e851881c349928ca4c7a644451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnim: {fileID: 792321678}
+  playerCol: {fileID: 792321677}
   timeSlider: {fileID: 1223279814}
   UIFade: {fileID: 1223279815}
   canSleep: 1
@@ -3643,6 +3687,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ef4b2e851881c349928ca4c7a644451, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnim: {fileID: 792321678}
+  playerCol: {fileID: 792321677}
   timeSlider: {fileID: 1223279814}
   UIFade: {fileID: 1223279815}
   canSleep: 1
@@ -3740,6 +3786,7 @@ GameObject:
   - component: {fileID: 1588160517}
   - component: {fileID: 1588160523}
   - component: {fileID: 1588160524}
+  - component: {fileID: 1588160525}
   m_Layer: 0
   m_Name: bird
   m_TagString: Enemy
@@ -3874,7 +3921,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588160516}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3908,6 +3955,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTime: 0
   maxTime: 3
+--- !u!114 &1588160525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1588160516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63706161fa903349af5527b98417fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1615904861
 GameObject:
   m_ObjectHideFlags: 0
@@ -4766,6 +4825,7 @@ GameObject:
   - component: {fileID: 2043367419}
   - component: {fileID: 2043367418}
   - component: {fileID: 2043367423}
+  - component: {fileID: 2043367424}
   m_Layer: 0
   m_Name: bird (1)
   m_TagString: Enemy
@@ -4781,7 +4841,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043367415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -4934,6 +4994,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTime: 0
   maxTime: 3
+--- !u!114 &2043367424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043367415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b63706161fa903349af5527b98417fce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2131765891
 GameObject:
   m_ObjectHideFlags: 0

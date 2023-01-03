@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isMoving;
     private bool isFacingLeft = false;
 
-    Rigidbody2D body;
+    private Rigidbody2D body;
     private SpriteRenderer spriteRenderer;
     private PlayerCollision playerCollision;
     private PlayerAnimations playerAnim;
@@ -39,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
         DiveCheck();
     }
 
-    void DiveCheck() // While optimize later
+    void DiveCheck() // Will optimize later
     {
         if (!playerCollision.isGrounded && vertical < 0)
         {
@@ -54,15 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FlipSprite() // Will optimize later when assets are created
     {
-        if (isFacingLeft)
-        {
-            spriteRenderer.flipX = true;
-        }
-        else
-        {
-            spriteRenderer.flipX = false;
-        }
-
+        spriteRenderer.flipX = isFacingLeft;
 
         if (horizontal > 0)
         {

@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BranchCollision : MonoBehaviour
 {
+    [SerializeField] private PlayerAnimations playerAnim;
+    [SerializeField] private PlayerCollision playerCol;
     [SerializeField] private SleepTimer timeSlider;
     [SerializeField] private UIFadeInOut UIFade;
     //[SerializeField] private FruitListIndex fruitList;
     private BoxCollider2D boxCollider;
     public bool canSleep;
+    private bool isScared;
     public bool isPlayerHere;
     private bool isCarrying;
 
@@ -20,10 +23,21 @@ public class BranchCollision : MonoBehaviour
 
     private void Update()
     {
-        if (canSleep && isPlayerHere)
+        if (isPlayerHere)
         {
-            UIFade.ShowUI();
-            timeSlider.StartTime();
+            // Need to optimize later
+            if (!canSleep && isScared || playerCol.isScared)
+            {
+                playerAnim.SetAnimStateBool("isScared", true);
+                UIFade.HideUI();
+                timeSlider.ResetTime();
+            }
+            else if (canSleep && isScared || !playerCol.isScared)
+            {
+                playerAnim.SetAnimStateBool("isScared", false);
+                UIFade.ShowUI();
+                timeSlider.StartTime();
+            }
         }
     }
 
@@ -48,6 +62,7 @@ public class BranchCollision : MonoBehaviour
             {
                 if (isPlayerHere)
                 {
+                    isScared = true;
                     canSleep = false;
                     UIFade.HideUI();
                     timeSlider.ResetTime();
@@ -67,14 +82,14 @@ public class BranchCollision : MonoBehaviour
                     isPlayerHere = true;
                     if (canSleep)
                     {
-                        UIFade.ShowUI();
-                        timeSlider.StartTime();
+                        //UIFade.ShowUI();
+                        //timeSlider.StartTime();
                     }
                     else
                     {
-                        UIFade.HideUI();
-                        timeSlider.ResetTime();
-                        Debug.Log("Can't sleep");
+                        //UIFade.HideUI();
+                        //timeSlider.ResetTime();
+                        //Debug.Log("Can't sleep");
                     }
                     return;
                 }
@@ -83,7 +98,6 @@ public class BranchCollision : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Negotiable"))
         {
-            //Debug.Log("sdadasda");
             canSleep = false;
         }
     }
@@ -135,6 +149,8 @@ public class BranchCollision : MonoBehaviour
             collision.gameObject.GetComponent<ObjectBehavior>().onBranch = false;
             if (collision.gameObject.GetComponent<ObjectBehavior>().isMushroom)
             {
+                Debug.Log("sdasdadasdas");
+                isScared = false;
                 canSleep = true;
             }
         }
