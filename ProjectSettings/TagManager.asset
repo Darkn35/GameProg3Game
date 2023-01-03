@@ -11,6 +11,7 @@ TagManager:
   - Nut
   - Predator
   - Negotiable
+  - BirdPredFlip
   layers:
   - Default
   - TransparentFX

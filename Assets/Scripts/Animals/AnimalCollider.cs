@@ -31,4 +31,20 @@ public class AnimalCollider : MonoBehaviour
             collision.gameObject.GetComponent<PlayerCollision>().isScared = false;
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag.Equals("BirdPredFlip"))
+        {
+            try
+            {
+                this.gameObject.GetComponent<BirdPredatorMovement>().Flip();
+            }
+            catch
+            {
+                Debug.Log("Errorrrr");
+            }
+            
+        }
+    }
 }
