@@ -147,7 +147,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 32254006}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40, y: 0, z: 0}
+  m_LocalPosition: {x: 32.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -275,7 +275,7 @@ GameObject:
   - component: {fileID: 136205617}
   - component: {fileID: 136205616}
   - component: {fileID: 136205615}
-  - component: {fileID: 136205614}
+  - component: {fileID: 136205621}
   m_Layer: 0
   m_Name: bird (3)
   m_TagString: Enemy
@@ -283,26 +283,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &136205614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 136205613}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fde43a5cd78086468676451ea393453, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectFade: {fileID: 136205615}
-  objBehavior: {fileID: 0}
-  isFading: 0
-  gameObj: {fileID: 136205613}
-  timeToDisappear: 10
-  totalTime: 0
-  isInteractable: 0
-  objectName: Bird
 --- !u!114 &136205615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,13 +423,27 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 136205613}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.812988, y: 0.9759959, z: 8.160818}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 299589425}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &136205621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136205613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d881f1b3c53154aafd3bd226fe2253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTime: 0
+  maxTime: 3
 --- !u!1 &144724529
 GameObject:
   m_ObjectHideFlags: 0
@@ -1328,7 +1322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: -24.18, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2016,7 +2010,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792321670}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.16, y: 3.38, z: -1}
+  m_LocalPosition: {x: -24.18, y: 0, z: -1}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -2027,7 +2021,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &792321676
 Animator:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -2044,7 +2038,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!114 &792321677
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2124,7 +2118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816557090}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -9.7, z: 10}
+  m_LocalPosition: {x: 0, y: -7.18, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2145,7 +2139,7 @@ GameObject:
   - component: {fileID: 840582435}
   - component: {fileID: 840582434}
   - component: {fileID: 840582433}
-  - component: {fileID: 840582432}
+  - component: {fileID: 840582438}
   m_Layer: 0
   m_Name: bird (2)
   m_TagString: Enemy
@@ -2161,33 +2155,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 840582430}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.812988, y: 0.9759959, z: 8.160818}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 299589425}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &840582432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 840582430}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fde43a5cd78086468676451ea393453, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectFade: {fileID: 840582433}
-  objBehavior: {fileID: 0}
-  isFading: 0
-  gameObj: {fileID: 840582430}
-  timeToDisappear: 10
-  totalTime: 0
-  isInteractable: 0
-  objectName: Bird
 --- !u!114 &840582433
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2320,6 +2294,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &840582438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840582430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d881f1b3c53154aafd3bd226fe2253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTime: 0
+  maxTime: 3
 --- !u!1 &864167281
 GameObject:
   m_ObjectHideFlags: 0
@@ -2515,8 +2503,9 @@ MonoBehaviour:
   posRight: {fileID: 32254007}
   posUp: {fileID: 1615904862}
   posDown: {fileID: 816557091}
-  minDelay: 1
-  maxDelay: 5
+  minDelay: 3
+  maxDelay: 7
+  probability: 0.5
   isFacingLeft: 0
   birdObjects:
   - {fileID: 1588160516}
@@ -3885,7 +3874,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588160516}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.812988, y: 0.9759959, z: 8.160818}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3914,17 +3903,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1588160516}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fde43a5cd78086468676451ea393453, type: 3}
+  m_Script: {fileID: 11500000, guid: a8d881f1b3c53154aafd3bd226fe2253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectFade: {fileID: 1588160523}
-  objBehavior: {fileID: 0}
-  isFading: 0
-  gameObj: {fileID: 1588160516}
-  timeToDisappear: 10
-  totalTime: 0
-  isInteractable: 0
-  objectName: Bird
+  currentTime: 0
+  maxTime: 3
 --- !u!1 &1615904861
 GameObject:
   m_ObjectHideFlags: 0
@@ -4059,7 +4042,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 14.924804
+  m_Mass: 14.924803
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -4191,6 +4174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d881f1b3c53154aafd3bd226fe2253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentTime: 0
   maxTime: 5
 --- !u!114 &1655382856
 MonoBehaviour:
@@ -4594,7 +4578,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793669724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -40, y: 0, z: 0}
+  m_LocalPosition: {x: -32.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4781,7 +4765,7 @@ GameObject:
   - component: {fileID: 2043367420}
   - component: {fileID: 2043367419}
   - component: {fileID: 2043367418}
-  - component: {fileID: 2043367417}
+  - component: {fileID: 2043367423}
   m_Layer: 0
   m_Name: bird (1)
   m_TagString: Enemy
@@ -4797,33 +4781,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043367415}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 27.812988, y: 0.9759959, z: 8.160818}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 299589425}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2043367417
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2043367415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fde43a5cd78086468676451ea393453, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectFade: {fileID: 2043367418}
-  objBehavior: {fileID: 0}
-  isFading: 0
-  gameObj: {fileID: 2043367415}
-  timeToDisappear: 10
-  totalTime: 0
-  isInteractable: 0
-  objectName: Bird
 --- !u!114 &2043367418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4956,6 +4920,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2043367423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043367415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8d881f1b3c53154aafd3bd226fe2253, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentTime: 0
+  maxTime: 3
 --- !u!1 &2131765891
 GameObject:
   m_ObjectHideFlags: 0

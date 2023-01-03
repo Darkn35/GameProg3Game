@@ -83,7 +83,7 @@ public class BranchCollision : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("Negotiable"))
         {
-            Debug.Log("sdadasda");
+            //Debug.Log("sdadasda");
             canSleep = false;
         }
     }

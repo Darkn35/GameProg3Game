@@ -36,22 +36,7 @@ public class ObjectTimer : MonoBehaviour
     {
         totalTime -= Time.deltaTime;
 
-        if (objectName == "Bird")
-        {
-            if (totalTime <= 1f && !isFading)
-            {
-                isFading = true;
-                StartCoroutine(objectFade.FadeOut());
-            }
-
-            if (totalTime <= 0)
-            {
-                Init();
-                objectFade.ResetVal();
-                gameObj.SetActive(false);
-            }
-        }
-        else if (objectName == "Interactable")
+        if (objectName == "Interactable")
         {
             if (totalTime <= 1f && !isFading)
             {

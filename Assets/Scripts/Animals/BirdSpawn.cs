@@ -13,6 +13,7 @@ public class BirdSpawn : MonoBehaviour
     [Header("Settings")]
     public float minDelay;
     public float maxDelay;
+    public float probability;
     public bool isFacingLeft;
 
     [Header("Array of Bird Objects")]
@@ -21,28 +22,69 @@ public class BirdSpawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        InvokeRepeating("CheckIfActive", 0f, RandomTime());
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(CheckIfActive());
+        //StartCoroutine(CheckIfActive());
     }
 
-    IEnumerator CheckIfActive()
+    void CheckIfActive()
     {
-        float seconds = Random.Range(minDelay, maxDelay + 1);
-
-        WaitForSeconds wait = new WaitForSeconds(seconds);
         for (int i = 0; i < birdObjects.Length; i++)
         {
             if (!birdObjects[i].activeInHierarchy)
             {
-                birdObjects[i].SetActive(true);
-                MoveToPos(ChoosePosX(), ChoosePosY(), birdObjects, i);
+                if (RandomChance())
+                {
+                    StartCoroutine(SpawnBird(i));
+
+                }
             }
-            yield return wait;
+        }
+    }
+
+    //IEnumerator DelayCode(int i)
+    //{
+    //    float x = RandomTime();
+    //    yield return new WaitForSeconds(x);
+    //    //SpawnBird(i);
+
+    //}
+
+    IEnumerator SpawnBird(int i)
+    {
+        float x = RandomTime();
+        yield return new WaitForSeconds(x);
+
+        if(!birdObjects[i].activeInHierarchy) 
+        // Birds can still be teleported to new positions while active
+        {
+            birdObjects[i].GetComponent<AnimalDisappear>().Init();
+            MoveToPos(ChoosePosX(), ChoosePosY(), birdObjects, i);
+            birdObjects[i].SetActive(true);
+        }
+    }
+
+    float RandomTime()
+    {
+        float seconds = Random.Range(minDelay, maxDelay + 1);
+        return seconds;
+    }
+
+    bool RandomChance()
+    {
+        float x = Random.Range(0.01f, 1.0f);
+
+        if (x >= 0.0f && x <= probability)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
         }
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class AnimalDisappear : MonoBehaviour
 {
     Camera cam;
-    private float currentTime;
+    public float currentTime;
     public float maxTime;
     private SpriteFade spriteFade;
 
@@ -13,8 +13,13 @@ public class AnimalDisappear : MonoBehaviour
     void Start()
     {
         cam = Camera.main;
-        currentTime = maxTime;
         spriteFade = GetComponent<SpriteFade>();
+        Init();
+    }
+
+    public void Init()
+    {
+        currentTime = maxTime;
     }
 
     // Update is called once per frame
