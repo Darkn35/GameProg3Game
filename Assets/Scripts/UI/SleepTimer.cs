@@ -11,7 +11,7 @@ public class SleepTimer : MonoBehaviour
     public float sleepTime;
     public float sleepTimeMultiplier;
     public float itemTimeMultiplier;
-    private bool justLanded;
+    public bool justLanded;
 
     // Start is called before the first frame update
     void Start()
@@ -26,11 +26,13 @@ public class SleepTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        slider.value = sleepTime;
+
         if (justLanded)
         {
             sleepTime = sleepTime + (Time.deltaTime * sleepTimeMultiplier * itemTimeMultiplier);
         }
-        slider.value = sleepTime;
 
         if (!player.isMoving && justLanded)
         {

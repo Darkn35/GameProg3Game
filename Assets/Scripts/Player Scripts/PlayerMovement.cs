@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private SpriteRenderer spriteRenderer;
     private PlayerCollision playerCollision;
-    private PlayerAnimations playerAnim;
+    private ObjectAnimations playerAnim;
 
     public Transform interactionBox;
     public float offset;
@@ -26,7 +26,7 @@ public class PlayerMovement : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         playerCollision = GetComponent<PlayerCollision>();
-        playerAnim = GetComponent<PlayerAnimations>();
+        playerAnim = GetComponent<ObjectAnimations>();
     }
 
     // Update is called once per frame
@@ -77,13 +77,14 @@ public class PlayerMovement : MonoBehaviour
         }
         body.velocity = new Vector2(horizontal * movementSpeed, vertical * movementSpeed);
 
-        if (body.IsSleeping())
+
+        if (body.velocity.magnitude > 0) // Checks if rigidbody is moving
         {
-            isMoving = false;
+            isMoving = true;
         }
         else
         {
-            isMoving = true;
+            isMoving = false;
         }
     }
 }

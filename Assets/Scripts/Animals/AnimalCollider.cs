@@ -38,7 +38,18 @@ public class AnimalCollider : MonoBehaviour
         {
             try
             {
-                this.gameObject.GetComponent<BirdPredatorMovement>().Flip();
+                BirdPredatorMovement birdPredMovement = this.gameObject.GetComponent<BirdPredatorMovement>();
+                BirdPredatorBehavior birdPredBehavior = this.gameObject.GetComponent<BirdPredatorBehavior>();
+
+                birdPredMovement.Flip();
+
+                if (!birdPredMovement.isFlying)
+                {
+                    birdPredMovement.isFlying = true;
+                }
+
+
+                birdPredBehavior.PerchChance();
             }
             catch
             {

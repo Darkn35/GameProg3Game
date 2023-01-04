@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class PlayerAnimations : MonoBehaviour
+public class ObjectAnimations : MonoBehaviour
 {
-    [SerializeField] private Animator playerAnim;
+    [SerializeField] private Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerAnim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -21,13 +21,12 @@ public class PlayerAnimations : MonoBehaviour
 
     public void SetAnimStateTrig(string anim)
     {
-        //playerAnim.SetBool(anim, isTrue);
-        playerAnim.SetTrigger(anim);
+        animator.SetTrigger(anim);
     }
 
     public void SetAnimStateBool(string anim, bool isTrue)
     {
-        playerAnim.SetBool(anim, isTrue);
+        animator.SetBool(anim, isTrue);
     }
 
     public void ScaredAnimLeft()

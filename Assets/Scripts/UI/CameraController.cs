@@ -23,6 +23,17 @@ public class CameraController : MonoBehaviour
             playerPosition = new Vector3(player.transform.position.x - offset, playerPosition.y, playerPosition.z);
         }
 
+        // Y Axis
+
+        //if (player.transform.localScale.y > 0f)
+        //{
+        //    playerPosition = new Vector3(playerPosition.x, player.transform.position.y + offset, playerPosition.z);
+        //}
+        //else
+        //{
+        //    playerPosition = new Vector3(playerPosition.x, player.transform.position.y - offset, playerPosition.z);
+        //}
+
         transform.position = Vector3.Lerp(transform.position, playerPosition, offsetSmoothing * Time.deltaTime);
     }
 }

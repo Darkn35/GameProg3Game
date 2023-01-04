@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerCollision : MonoBehaviour
 {
-    [SerializeField] private PlayerAnimations playerAnimations;
+    [SerializeField] private ObjectAnimations playerAnimations;
     [SerializeField] private SleepTimer timeSlider;
     //[SerializeField] private FruitListIndex fruitList;
     [SerializeField] private PlayerInteractionBehavior buttonUI;
+    [SerializeField] private UIFadeInOut UIFade;
     public bool isGrounded;
     public bool isScared;
 
@@ -25,11 +26,19 @@ public class PlayerCollision : MonoBehaviour
                     return;
                 }
                 playerAnimations.SetAnimStateBool("isIdle", true);
+                playerAnimations.SetAnimStateBool("isScared", false);
                 playerAnimations.SetAnimStateBool("isFlying", false);
                 playerAnimations.SetAnimStateBool("isDiving", false);
                 isGrounded = true;
             }
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        // Added since Rigidbody.IsSleeping() is for some reason not working
+        UIFade.HideUI();
+        timeSlider.ResetTime();
     }
 
     private void OnCollisionExit2D(Collision2D collision)
