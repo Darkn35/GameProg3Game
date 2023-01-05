@@ -4,29 +4,35 @@ using UnityEngine;
 
 public class BirdPredatorMovement : MonoBehaviour
 {
+    [Header("Scripts")]
     [SerializeField] private BirdPredatorBehavior birdPred;
     [SerializeField] private ObjectAnimations anim;
 
+    [Header("Movement Settigns")]
+    [Tooltip("Positive Value - Facing Right\nNegative Value - Facing Left")]
     public float direction;
-    public float flightDistance;
     public float speed;
 
-    private float change;
+    [Header("Perch Position on Branch Offset")]
+    public float branchXAxisOffset;
+    public float branchYAxisOffset;
 
+    [Header("GameObject Arrays")]
     public GameObject[] branchArray;
     public GameObject[] waypoint;
-    public float branchYAxisOffset;
-    private Vector3 targetPos;
 
+    [Header("Boolean Behaviors")]
     public bool isFlying = true;
     public bool isPerched = false;
     public bool hasChosenBranch = false;
     public bool hasChosenWaypoint = false;
     public bool isGoingBack = false;
-    private float timer;
 
     private Transform birdTransform;
     private SpriteRenderer spriteRenderer;
+    private float change;
+    private float timer;
+    private Vector3 targetPos;
 
     // Start is called before the first frame update
     void Start()

@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class BirdPredatorBehavior : MonoBehaviour
 {
+    [Tooltip("Chance to perch or fly away.")]
+    public float probability;
+    [Tooltip("Total number of cycles before destroyed or unactivated.")]
+    public int numOfCycles;
+    [Tooltip("Increases when it hits a waypoint.")]
+    public int currentNum;
+
+    [Header("Scripts")]
     [SerializeField] private BirdPredatorMovement birdPred;
     [SerializeField] private ObjectAnimations anim;
-
-    public float probability;
-    public int numOfCycles;
-    public int currentNum;
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +67,7 @@ public class BirdPredatorBehavior : MonoBehaviour
             anim.SetAnimStateBool("isFlying", false);
             anim.SetAnimStateBool("isDiving", true);
 
-            return new Vector3(chosenBranch.transform.position.x, chosenBranch.transform.position.y + birdPred.branchYAxisOffset, chosenBranch.transform.position.z);
+            return new Vector3(chosenBranch.transform.position.x + birdPred.branchXAxisOffset, chosenBranch.transform.position.y + birdPred.branchYAxisOffset, chosenBranch.transform.position.z);
         }
         else if (actionName == "goBack")
         {

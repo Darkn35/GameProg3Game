@@ -7,6 +7,7 @@ public class AnimalMovement : MonoBehaviour
     public float direction;
     public bool isFacingLeft;
     public bool isBird;
+    public bool isFox;
 
     private Rigidbody2D body;
     private SpriteRenderer spriteRenderer;
@@ -38,7 +39,7 @@ public class AnimalMovement : MonoBehaviour
                 spriteRenderer.flipX = true;
             }
         }
-        else
+        else if (isFox)
         {
             if (isFacingLeft)
             {

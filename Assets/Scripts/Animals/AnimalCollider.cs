@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class AnimalCollider : MonoBehaviour
 {
+    private AnimalMovement animalMovement;
+
+    public bool isEnemy;
+    public bool isFox;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        animalMovement = GetComponentInParent<AnimalMovement>();
     }
 
     // Update is called once per frame
@@ -18,7 +23,7 @@ public class AnimalCollider : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Player"))
+        if (collision.gameObject.tag.Equals("Player") && isEnemy)
         {
             collision.gameObject.GetComponent<PlayerCollision>().isScared = true;
         }
@@ -26,7 +31,7 @@ public class AnimalCollider : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag.Equals("Player"))
+        if (collision.gameObject.tag.Equals("Player") && isEnemy)
         {
             collision.gameObject.GetComponent<PlayerCollision>().isScared = false;
         }
@@ -47,15 +52,33 @@ public class AnimalCollider : MonoBehaviour
                 {
                     birdPredMovement.isFlying = true;
                 }
-
-
                 birdPredBehavior.PerchChance();
             }
             catch
             {
                 Debug.Log("Errorrrr");
             }
-            
+        }
+
+        if (collision.gameObject.tag.Equals("EInteractable") && isFox)
+        {
+            if (animalMovement.isFox)
+            {
+                if (collision.gameObject.GetComponent<ObjectBehavior>().isMushroom)
+                {
+                    Vector3 dir = collision.transform.position - GetComponentInParent<Transform>().position;
+
+                    if (dir.x < 0)
+                    {
+                        animalMovement.isFacingLeft = true;
+                    }
+                    else
+                    {
+                        animalMovement.isFacingLeft = false;
+                    }
+                    StartCoroutine(animalMovement.Startled());
+                }
+            }
         }
     }
 }

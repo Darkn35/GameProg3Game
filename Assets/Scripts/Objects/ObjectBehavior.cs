@@ -73,7 +73,12 @@ public class ObjectBehavior : MonoBehaviour
     {
         sleepTimer.itemTimeMultiplier = sleepMultiplier;
         //this.GetComponent<ObjectTimer>().Init();
-        //this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
+        Invoke("DestroyFruit", 2f);
+    }
+
+    void DestroyFruit()
+    {
         Destroy(this.gameObject);
     }
 
