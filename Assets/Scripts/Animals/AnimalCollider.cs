@@ -7,7 +7,7 @@ public class AnimalCollider : MonoBehaviour
     private AnimalMovement animalMovement;
 
     public bool isEnemy;
-    public bool isFox;
+    public bool isFlyingAnimal;
 
     // Start is called before the first frame update
     void Start()
@@ -59,26 +59,58 @@ public class AnimalCollider : MonoBehaviour
                 Debug.Log("Errorrrr");
             }
         }
-
-        if (collision.gameObject.tag.Equals("EInteractable") && isFox)
+        else if (collision.gameObject.tag.Equals("EInteractable") && !isFlyingAnimal)
         {
-            if (animalMovement.isFox)
+            switch (animalMovement.animalType)
             {
-                if (collision.gameObject.GetComponent<ObjectBehavior>().isMushroom)
-                {
-                    Vector3 dir = collision.transform.position - GetComponentInParent<Transform>().position;
+                case AnimalMovement.EnemyAnimals.Fox:
+                    {
+                        Startled(collision);
+                    }
+                    break;
+                case AnimalMovement.EnemyAnimals.Snake:
+                    {
+                        Startled(collision);
+                    }
+                    break;
+            }
+        }
+    }
 
-                    if (dir.x < 0)
-                    {
-                        animalMovement.isFacingLeft = true;
-                    }
-                    else
-                    {
-                        animalMovement.isFacingLeft = false;
-                    }
-                    StartCoroutine(animalMovement.Startled());
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!isFlyingAnimal && collision.gameObject.tag.Equals("Tree Trunk"))
+        {
+            if (animalMovement.animalType == AnimalMovement.EnemyAnimals.Snake)
+            {
+                if (collision.gameObject.GetComponent<TreeBehavior>().isSafe)
+                {
+                    animalMovement.isFacingLeft = !animalMovement.isFacingLeft;
+                }
+                else
+                {
+                    collision.gameObject.GetComponent<TreeBehavior>().SnakeOnTree();
+                    this.gameObject.SetActive(false);
                 }
             }
+        }
+    }
+
+    void Startled(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<ObjectBehavior>().isMushroom)
+        {
+            Vector3 dir = collision.transform.position - GetComponentInParent<Transform>().position;
+
+            if (dir.x < 0)
+            {
+                animalMovement.isFacingLeft = false;
+            }
+            else
+            {
+                animalMovement.isFacingLeft = true;
+            }
+            StartCoroutine(animalMovement.Startled());
         }
     }
 }

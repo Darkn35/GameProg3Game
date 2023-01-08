@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2328085697077466936}
   - component: {fileID: 3716205920422735207}
   - component: {fileID: 4592439897006825113}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Apple
   m_TagString: EInteractable
   m_Icon: {fileID: 0}
@@ -194,6 +194,8 @@ MonoBehaviour:
   onBranch: 0
   isFruit: 1
   isMushroom: 0
+  isNut: 0
+  isBranch: 0
   sleepMultiplier: 2
   sleepTimer: {fileID: 0}
   buttonUI: {fileID: 0}

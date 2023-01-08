@@ -6,8 +6,14 @@ public class AnimalMovement : MonoBehaviour
 {
     public float direction;
     public bool isFacingLeft;
-    public bool isBird;
-    public bool isFox;
+    
+    [System.Serializable]
+    public enum EnemyAnimals
+    {
+        Bird, Fox, Snake
+    }
+
+    [SerializeField] public EnemyAnimals animalType;
 
     private Rigidbody2D body;
     private SpriteRenderer spriteRenderer;
@@ -26,33 +32,34 @@ public class AnimalMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isBird) // will optimize later
+        if (isFacingLeft)
         {
-            if (isFacingLeft)
+            direction = -1;
+
+            if ((animalType == EnemyAnimals.Bird))
             {
-                direction = -1;
-                spriteRenderer.flipX = false;
-            }
-            else
-            {
-                direction = 1;
                 spriteRenderer.flipX = true;
             }
-        }
-        else if (isFox)
-        {
-            if (isFacingLeft)
+            else
             {
-                direction = 1;
+                spriteRenderer.flipX = false;
+            }
+        }
+        else
+        {
+            direction = 1;
+
+            if ((animalType == EnemyAnimals.Bird))
+            {
                 spriteRenderer.flipX = false;
             }
             else
             {
-                direction = -1;
                 spriteRenderer.flipX = true;
             }
         }
     }
+
 
     public IEnumerator Startled()
     {

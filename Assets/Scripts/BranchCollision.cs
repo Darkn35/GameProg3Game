@@ -11,6 +11,7 @@ public class BranchCollision : MonoBehaviour
     //[SerializeField] private FruitListIndex fruitList;
     private BoxCollider2D boxCollider;
     public bool canSleep;
+    public bool isScared;
     public bool isPlayerHere;
     private bool isCarrying;
 
@@ -26,7 +27,7 @@ public class BranchCollision : MonoBehaviour
         {
             // Need to optimize later
             
-            if (playerCol.isScared)
+            if (playerCol.isScared || isScared)
             {
                 playerAnim.SetAnimStateBool("isScared", true);
                 UIFade.HideUI();

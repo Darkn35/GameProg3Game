@@ -12,17 +12,18 @@ TagManager:
   - Predator
   - Negotiable
   - BirdPredFlip
+  - Tree Trunk
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Ground
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
+  - Fox
+  - Snake
+  - Objects
+  - Tree Trunk
   - 
   - 
   - 

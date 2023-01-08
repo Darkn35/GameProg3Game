@@ -12,6 +12,7 @@ public class BirdPredatorMovement : MonoBehaviour
     [Tooltip("Positive Value - Facing Right\nNegative Value - Facing Left")]
     public float direction;
     public float speed;
+    public float diveSpeed = 1;
 
     [Header("Perch Position on Branch Offset")]
     public float branchXAxisOffset;
@@ -39,7 +40,6 @@ public class BirdPredatorMovement : MonoBehaviour
     {
         birdTransform = GetComponent<Transform>();
         spriteRenderer = GetComponent<SpriteRenderer>();
-        change = speed * Time.deltaTime;
         direction = -1; // Optimize when assets arrive
         timer = 3f;
     }
@@ -47,6 +47,7 @@ public class BirdPredatorMovement : MonoBehaviour
     private void FixedUpdate()
     {
         //Flip();
+        change = speed * Time.deltaTime;
 
         if (isFlying)
         {
@@ -88,7 +89,7 @@ public class BirdPredatorMovement : MonoBehaviour
 
     void MoveToTargetPos(string actionName)
     {
-        birdTransform.position = Vector3.MoveTowards(birdTransform.position, targetPos, change);
+        birdTransform.position = Vector3.MoveTowards(birdTransform.position, targetPos, change * diveSpeed);
 
         if (birdTransform.position == targetPos && actionName == "perch")
         {

@@ -11,6 +11,7 @@ public class ObjectBehavior : MonoBehaviour
     public bool isFruit;
     public bool isMushroom;
     public bool isNut;
+    public bool isBranch;
 
     public float sleepMultiplier;
     [SerializeField] private SleepTimer sleepTimer;
@@ -38,14 +39,15 @@ public class ObjectBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isFruit && !isMushroom && !isNut)
-        {
-            // branches, etc.
-        }
-        else
-        {
-            DetectInput();
-        }
+        //if (!isFruit && !isMushroom && !isNut)
+        //{
+        //    // branches, etc.
+        //}
+        //else
+        //{
+        //    DetectInput();
+        //}
+        DetectInput();
     }
 
     void DetectInput()

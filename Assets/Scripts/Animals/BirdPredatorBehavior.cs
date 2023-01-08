@@ -11,6 +11,8 @@ public class BirdPredatorBehavior : MonoBehaviour
     [Tooltip("Increases when it hits a waypoint.")]
     public int currentNum;
 
+    public float diveSpeed;
+
     [Header("Scripts")]
     [SerializeField] private BirdPredatorMovement birdPred;
     [SerializeField] private ObjectAnimations anim;
@@ -18,7 +20,7 @@ public class BirdPredatorBehavior : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        diveSpeed = birdPred.diveSpeed;
     }
 
     // Update is called once per frame
@@ -62,6 +64,8 @@ public class BirdPredatorBehavior : MonoBehaviour
 
             birdPred.hasChosenBranch = true;
 
+            birdPred.diveSpeed = diveSpeed;
+
             GameObject chosenBranch = birdPred.branchArray[i];
 
             anim.SetAnimStateBool("isFlying", false);
@@ -74,6 +78,7 @@ public class BirdPredatorBehavior : MonoBehaviour
             int i = Random.Range(0, birdPred.waypoint.Length);
             birdPred.hasChosenWaypoint = true;
             birdPred.isGoingBack = true;
+            birdPred.diveSpeed = 1f;
 
             switch (i) 
             {

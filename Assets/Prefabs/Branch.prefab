@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 4606445889118261719}
   - component: {fileID: 4606445889118261717}
   - component: {fileID: 4606445889118261716}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Branch
-  m_TagString: Untagged
+  m_TagString: EInteractable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1825,6 +1825,8 @@ MonoBehaviour:
   onBranch: 0
   isFruit: 0
   isMushroom: 0
+  isNut: 0
+  isBranch: 1
   sleepMultiplier: 0
   sleepTimer: {fileID: 0}
   buttonUI: {fileID: 0}
@@ -1856,7 +1858,6 @@ MonoBehaviour:
   objectFade: {fileID: 4606445889118261717}
   objBehavior: {fileID: 4606445889118261719}
   isFading: 0
-  objectsSpawn: {fileID: 0}
   gameObj: {fileID: 4606445889118261718}
   timeToDisappear: 10
   totalTime: 0

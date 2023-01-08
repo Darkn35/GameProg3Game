@@ -184,6 +184,8 @@ MonoBehaviour:
   onBranch: 0
   isFruit: 0
   isMushroom: 1
+  isNut: 0
+  isBranch: 0
   sleepMultiplier: 0
   sleepTimer: {fileID: 0}
   buttonUI: {fileID: 0}
@@ -230,7 +232,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5491503079825026340}
   - component: {fileID: 5905663722629219104}
-  - component: {fileID: 7401958264824729813}
   m_Layer: 0
   m_Name: Mushroom Trigger Area
   m_TagString: Untagged
@@ -269,15 +270,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &7401958264824729813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7795098346795411485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ac5c53ef541c7c45ac2370d28647fcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

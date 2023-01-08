@@ -6,21 +6,22 @@ public class NegotiableCollider : MonoBehaviour
 {
     [SerializeField] private UIFadeInOut fadeUI;
     [SerializeField] private SleepTimer sleepTime;
+    private NegotiableBehavior negotiableBehavior;
 
     private GameObject branch;
-    private GameObject requestedObj;
     private GameObject animal;
+    public GameObject requestedObj;
+    public TreeBehavior tree;
 
-    public bool isSquirrel;
-    public bool isBird;
-
-    private bool isCorrectRequestedObj;
     private bool isContent = false;
+    private bool isPlayerHere;
+
     public float sleepMultiplier;
 
     // Start is called before the first frame update
     void Start()
     {
+        negotiableBehavior = GetComponentInParent<NegotiableBehavior>();
         animal = this.transform.parent.gameObject;
     }
 
@@ -42,26 +43,6 @@ public class NegotiableCollider : MonoBehaviour
         animal.SetActive(false);
     }
 
-    private void CheckForItem(Collider2D collision, string triggerState)
-    {
-        if (isSquirrel)
-        {
-            isCorrectRequestedObj = collision.gameObject.GetComponent<ObjectBehavior>().isNut;
-        }
-        else if (isBird)
-        {
-            isCorrectRequestedObj = collision.gameObject.GetComponent<ObjectBehavior>().isFruit;
-        }
-
-        if (isCorrectRequestedObj && triggerState == "enter")
-        {
-            requestedObj = collision.gameObject;
-        }
-        else if (isCorrectRequestedObj && triggerState == "exit")
-        {
-            requestedObj = null;
-        }
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -72,7 +53,7 @@ public class NegotiableCollider : MonoBehaviour
 
         if (collision.gameObject.tag.Equals("EInteractable"))
         {
-            CheckForItem(collision, "enter");
+            negotiableBehavior.CheckForItem(collision, "enter");
         }
     }
 
@@ -81,21 +62,52 @@ public class NegotiableCollider : MonoBehaviour
         if (collision.gameObject.tag.Equals("Player"))
         {
             fadeUI.HideUI();
+            isPlayerHere = false;
         }
 
         if (collision.gameObject.tag.Equals("EInteractable"))
         {
-            CheckForItem(collision, "exit");
+            negotiableBehavior.CheckForItem(collision, "exit");
         }
     }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        bool isPlayerHere = branch.GetComponent<BranchCollision>().isPlayerHere;
-
-        if (collision.gameObject == requestedObj && isPlayerHere)
+        switch (negotiableBehavior.animalType)
         {
-            isContent = true;
+            case NegotiableBehavior.NegotiableAnimals.Weasel:
+                {
+                    if (collision.gameObject.tag.Equals("Player"))
+                    {
+                        isPlayerHere = true;
+                    }
+
+                    if (collision.gameObject == requestedObj && isPlayerHere)
+                    {
+                        isContent = true;
+
+
+                        if (!tree.isSafe)
+                        {
+                            tree.SnakeOffTree();
+                        }
+                        else
+                        {
+                            tree.isSafe = true;
+                        }
+                    }
+                }
+                break;
+            default:
+                {
+                    bool isPlayerHere = branch.GetComponent<BranchCollision>().isPlayerHere;
+
+                    if (collision.gameObject == requestedObj && isPlayerHere)
+                    {
+                        isContent = true;
+                    }
+                }
+                break;
         }
 
         if (collision.gameObject.tag.Equals("Player"))
