@@ -6,6 +6,7 @@ using TMPro;
 public class Timer : MonoBehaviour
 {
     [SerializeField] private WinBehavior win;
+    [SerializeField] private BackgroundMover background;
 
     public TextMeshProUGUI timerText;
 
@@ -13,13 +14,11 @@ public class Timer : MonoBehaviour
 
     public bool isTimeRunning;
 
-    public string finalTime;
-
-
     // Start is called before the first frame update
     void Start()
     {
         isTimeRunning = true;
+        //background.MoveBackgroundUp();
     }
 
     // Update is called once per frame
