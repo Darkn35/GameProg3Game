@@ -7,10 +7,19 @@ public class CameraController : MonoBehaviour
     public GameObject player;
     public float offset;
     public float offsetSmoothing;
+
+    public float minXPos;
+    public float maxXPos;
+    private bool isAtLevelEdge = false;
     private Vector3 playerPosition;
 
     // Update is called once per frame
     void Update()
+    {
+        MoveCamera();
+    }
+
+    void MoveCamera()
     {
         playerPosition = new Vector3(player.transform.position.x, transform.position.y, transform.position.z);
 
@@ -23,17 +32,24 @@ public class CameraController : MonoBehaviour
             playerPosition = new Vector3(player.transform.position.x - offset, playerPosition.y, playerPosition.z);
         }
 
-        // Y Axis
+        if (playerPosition.x >= maxXPos)
+        {
+            //transform.position = new Vector3(maxXPos, transform.position.y, transform.position.z);
+            isAtLevelEdge = true;
+        }
+        else if (playerPosition.x <= minXPos)
+        {
+            //transform.position = new Vector3(minXPos, transform.position.y, transform.position.z);
+            isAtLevelEdge = true;
+        }
+        else
+        {
+            isAtLevelEdge = false;
+        }
 
-        //if (player.transform.localScale.y > 0f)
-        //{
-        //    playerPosition = new Vector3(playerPosition.x, player.transform.position.y + offset, playerPosition.z);
-        //}
-        //else
-        //{
-        //    playerPosition = new Vector3(playerPosition.x, player.transform.position.y - offset, playerPosition.z);
-        //}
-
-        transform.position = Vector3.Lerp(transform.position, playerPosition, offsetSmoothing * Time.deltaTime);
+        if (!isAtLevelEdge)
+        {
+            transform.position = Vector3.Lerp(transform.position, playerPosition, offsetSmoothing * Time.deltaTime);
+        }
     }
 }
