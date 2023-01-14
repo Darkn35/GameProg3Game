@@ -37,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
         FlipSprite();
         DiveCheck();
+
     }
 
     void DiveCheck() // Will optimize later

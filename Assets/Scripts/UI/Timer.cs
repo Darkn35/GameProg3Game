@@ -18,7 +18,6 @@ public class Timer : MonoBehaviour
     void Start()
     {
         isTimeRunning = true;
-        //background.MoveBackgroundUp();
     }
 
     // Update is called once per frame

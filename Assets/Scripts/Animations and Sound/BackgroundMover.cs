@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BackgroundMover : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class BackgroundMover : MonoBehaviour
     {
         animations = GetComponent<ObjectAnimations>();
 
-        originalTransform.position = this.transform.position;
+        originalTransform = this.transform;
     }
 
     // Update is called once per frame
@@ -22,13 +21,9 @@ public class BackgroundMover : MonoBehaviour
         
     }
 
-    public void MoveBackgroundUp()
-    {
-        animations.SetAnimStateTrig("MoveUp");
-    }
+    //public void MoveBackgroundUp()
+    //{
+    //    animations.SetAnimStateTrig("MoveUp");
+    //}
 
-    public void ResetPosition()
-    {
-        this.transform.position = originalTransform.position;
-    }
 }
