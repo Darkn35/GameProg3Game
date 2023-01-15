@@ -19,13 +19,10 @@ public class MasterAudioMixer : MonoBehaviour
     public TextMeshProUGUI musicLabel;
     public TextMeshProUGUI effectsLabel;
 
-    private void Awake()
-    {
-        Preferences.instance.SetSoundSettings(masterSlider, musicSlider, effectsSlider);
-    }
-
     private void Start()
     {
+        Preferences.instance.SetSoundSettings(masterSlider, musicSlider, effectsSlider);
+        
         SetMasterVolume(masterSlider.value);
         SetMusicVolume(musicSlider.value);
         SetEffectsVolume(effectsSlider.value);
