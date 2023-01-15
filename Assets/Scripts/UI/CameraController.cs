@@ -17,6 +17,19 @@ public class CameraController : MonoBehaviour
     void Update()
     {
         MoveCamera();
+        DetectLevelEdge();
+    }
+
+    void DetectLevelEdge()
+    {
+        if (playerPosition.x >= maxXPos || playerPosition.x <= minXPos)
+        {
+            isAtLevelEdge = true;
+        }
+        else
+        {
+            isAtLevelEdge = false;
+        }
     }
 
     void MoveCamera()
@@ -30,21 +43,6 @@ public class CameraController : MonoBehaviour
         else
         {
             playerPosition = new Vector3(player.transform.position.x - offset, playerPosition.y, playerPosition.z);
-        }
-
-        if (playerPosition.x >= maxXPos)
-        {
-            //transform.position = new Vector3(maxXPos, transform.position.y, transform.position.z);
-            isAtLevelEdge = true;
-        }
-        else if (playerPosition.x <= minXPos)
-        {
-            //transform.position = new Vector3(minXPos, transform.position.y, transform.position.z);
-            isAtLevelEdge = true;
-        }
-        else
-        {
-            isAtLevelEdge = false;
         }
 
         if (!isAtLevelEdge)

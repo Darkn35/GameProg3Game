@@ -15,6 +15,7 @@ public class UIMenu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject menuAbout;
     public GameObject menuCredits;
+    public GameObject menuSettings;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +68,12 @@ public class UIMenu : MonoBehaviour
                     menuCredits.SetActive(true);
                 }
                 break;
+            case "menuSettings":
+                {
+                    mainMenu.SetActive(false);
+                    menuSettings.SetActive(true);
+                }
+                break;
             case "menuExit":
                 {
                     Application.Quit();
@@ -81,6 +88,10 @@ public class UIMenu : MonoBehaviour
                     else if (menuCredits.activeInHierarchy)
                     {
                         menuCredits.SetActive(false);
+                    }
+                    else if (menuSettings.activeInHierarchy)
+                    {
+                        menuSettings.SetActive(false);
                     }
                     mainMenu.SetActive(true);
                 }
