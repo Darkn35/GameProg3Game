@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class UIMenu : MonoBehaviour
 {
+    [Header("Transition Animator")]
+    public LevelLoader levelLoader;
+
     [Header("Pause Menu Variables")]
     public GameObject pauseMenu;
     public PlayerInput playerInput;
@@ -13,14 +16,18 @@ public class UIMenu : MonoBehaviour
 
     [Header("UI Menu Variables")]
     public GameObject mainMenu;
-    public GameObject menuAbout;
-    public GameObject menuCredits;
+    public GameObject menuAboutPageOne;
+    public GameObject menuAboutPageTwo;
+    public GameObject menuCreditsPageOne;
+    public GameObject menuCreditsPageTwo;
     public GameObject menuSettings;
+
+    private ObjectSounds sounds;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        sounds = GetComponent<ObjectSounds>();
     }
 
     // Update is called once per frame
@@ -31,6 +38,7 @@ public class UIMenu : MonoBehaviour
 
     public void ButtonFunction(string input)
     {
+        sounds.PlayAudioOnce(ClipName.ClickSFX);
         switch (input)
         {
             case "pauseResume":
@@ -42,30 +50,34 @@ public class UIMenu : MonoBehaviour
                 break;
             case "pauseRetry":
                 {
-                    SceneManager.LoadScene(winBehavior.levelName);
+                    playerInput.isPaused = false;
+                    pauseBehavior.ResumeTime();
+                    levelLoader.LoadNextLevel(winBehavior.levelName);
                 }
                 break;
             case "pauseExit":
                 {
+                    MusicPlayer.instance.FadeAudio(0f);
                     pauseBehavior.ResumeTime();
-                    SceneManager.LoadScene("MainMenu");
+                    levelLoader.LoadNextLevel("MainMenu");
                 }
                 break;
             case "menuStart":
                 {
-                    SceneManager.LoadScene("SampleScene");
+                    MusicPlayer.instance.FadeAudio(0f);
+                    levelLoader.LoadNextLevel("Level 1");
                 }
                 break;
             case "menuAbout":
                 {
                     mainMenu.SetActive(false);
-                    menuAbout.SetActive(true);
+                    menuAboutPageOne.SetActive(true);
                 }
                 break;
             case "menuCredits":
                 {
                     mainMenu.SetActive(false);
-                    menuCredits.SetActive(true);
+                    menuCreditsPageOne.SetActive(true);
                 }
                 break;
             case "menuSettings":
@@ -79,15 +91,41 @@ public class UIMenu : MonoBehaviour
                     Application.Quit();
                 }
                 break;
-            case "back" : 
+            case "next":
                 {
-                    if (menuAbout.activeInHierarchy)
+                    if (menuAboutPageOne.activeInHierarchy)
                     {
-                        menuAbout.SetActive(false);
+                        menuAboutPageTwo.SetActive(true);
+                        menuAboutPageOne.SetActive(false);
                     }
-                    else if (menuCredits.activeInHierarchy)
+                    else if (menuCreditsPageOne.activeInHierarchy)
                     {
-                        menuCredits.SetActive(false);
+                        menuCreditsPageTwo.SetActive(true);
+                        menuCreditsPageOne.SetActive(false);
+                    }
+                }
+                break;
+            case "back":
+                {
+                    if (menuAboutPageOne.activeInHierarchy)
+                    {
+                        menuAboutPageOne.SetActive(false);
+                    }
+                    else if (menuAboutPageTwo.activeInHierarchy)
+                    {
+                        menuAboutPageTwo.SetActive(false);
+                        menuAboutPageOne.SetActive(true);
+                        break;
+                    }
+                    else if (menuCreditsPageOne.activeInHierarchy)
+                    {
+                        menuCreditsPageOne.SetActive(false);
+                    }
+                    else if (menuCreditsPageTwo.activeInHierarchy)
+                    {
+                        menuCreditsPageTwo.SetActive(false);
+                        menuCreditsPageOne.SetActive(true);
+                        break;
                     }
                     else if (menuSettings.activeInHierarchy)
                     {

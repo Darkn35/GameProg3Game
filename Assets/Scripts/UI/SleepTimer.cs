@@ -12,6 +12,7 @@ public class SleepTimer : MonoBehaviour
     public float sleepTimeMultiplier;
     public float itemTimeMultiplier;
     public bool justLanded;
+    private bool isGameOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,9 +44,10 @@ public class SleepTimer : MonoBehaviour
             sleepTime = 0f;
         }
 
-        if (slider.value == slider.maxValue)
+        if (slider.value == slider.maxValue && !isGameOver)
         {
             winBehavior.Win();
+            isGameOver = true;
         }
     }
     public void StartTime()

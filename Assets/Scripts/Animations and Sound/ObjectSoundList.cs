@@ -12,25 +12,30 @@ public enum ClipName
 
 public class ObjectSoundList : MonoBehaviour
 {
-    public AudioClip nameAudioClip;
-    public AudioClip jump;
-    public static ObjectSoundList instance;
+    public AudioClip mainMenuMusic;
+    public AudioClip gameMusic;
+    public AudioClip objectFell;
+    public AudioClip winSFX;
+    public AudioClip loseSFX;
+    public AudioClip clickSFX;
+    public AudioClip flapWings;
+    public AudioClip birdPredatorSFX;
+    public AudioClip scaredSFX;
+    public AudioClip negotiationSuccess;
+
+    public static ObjectSoundList instance = null;
 
     void Awake()
     {
-        instance = this;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            GameObject.DontDestroyOnLoad(gameObject);
+        }
     }
 
     public AudioClip FindAudioClip(ClipName name)
@@ -39,7 +44,43 @@ public class ObjectSoundList : MonoBehaviour
         {
             case ClipName.MainMenuMusic:
                 {
-                    return nameAudioClip;
+                    return mainMenuMusic;
+                }
+            case ClipName.GameMusic:
+                {
+                    return gameMusic;
+                }
+            case ClipName.ObjectFell:
+                {
+                    return objectFell;
+                }
+            case ClipName.WinSFX:
+                {
+                    return winSFX;
+                }
+            case ClipName.LoseSFX:
+                {
+                    return loseSFX;
+                }
+            case ClipName.ClickSFX:
+                {
+                    return clickSFX;
+                }
+            case ClipName.FlapWings:
+                {
+                    return flapWings;
+                }
+            case ClipName.BirdPredatorSFX:
+                {
+                    return birdPredatorSFX;
+                }
+            case ClipName.ScaredSFX:
+                {
+                    return scaredSFX;
+                }
+            case ClipName.NegotiationSuccess:
+                {
+                    return negotiationSuccess;
                 }
         }
         

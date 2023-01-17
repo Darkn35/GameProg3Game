@@ -12,11 +12,14 @@ public class Timer : MonoBehaviour
 
     public float seconds, minutes, timeRemaining;
 
+    private float maxTime, finalTime;
+
     public bool isTimeRunning;
 
     // Start is called before the first frame update
     void Start()
     {
+        maxTime = timeRemaining;
         isTimeRunning = true;
     }
 
@@ -38,6 +41,10 @@ public class Timer : MonoBehaviour
                 isTimeRunning = false;
             }
         }
+        else if (!isTimeRunning && timeRemaining > 0)
+        {
+            DisplayTime(maxTime - timeRemaining);
+        }
     }
 
     void DisplayTime(float timeToDisplay)
@@ -46,5 +53,6 @@ public class Timer : MonoBehaviour
         minutes = Mathf.FloorToInt(timeToDisplay / 60);
         seconds = Mathf.FloorToInt(timeToDisplay % 60);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timerText.enabled = true;
     }
 }

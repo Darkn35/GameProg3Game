@@ -46,7 +46,6 @@ public class BirdPredatorMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Flip();
         change = speed * Time.deltaTime;
 
         if (isFlying)
@@ -72,7 +71,7 @@ public class BirdPredatorMovement : MonoBehaviour
 
                 if (timer < 0)
                 {
-                    if (birdPred.RandomChance())
+                    if (birdPred.RandomChance("fly"))
                     {
                         targetPos = birdPred.targetPos("goBack");
                         Flip();

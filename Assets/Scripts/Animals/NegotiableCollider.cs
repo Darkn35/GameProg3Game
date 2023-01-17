@@ -7,6 +7,7 @@ public class NegotiableCollider : MonoBehaviour
     [SerializeField] private UIFadeInOut fadeUI;
     [SerializeField] private SleepTimer sleepTime;
     private NegotiableBehavior negotiableBehavior;
+    private ObjectSounds sounds;
 
     private GameObject branch;
     private GameObject animal;
@@ -15,6 +16,7 @@ public class NegotiableCollider : MonoBehaviour
 
     private bool isContent = false;
     private bool isPlayerHere;
+    private bool isAudioPlayed = false;
 
     public float sleepMultiplier;
 
@@ -22,6 +24,7 @@ public class NegotiableCollider : MonoBehaviour
     void Start()
     {
         negotiableBehavior = GetComponentInParent<NegotiableBehavior>();
+        sounds = transform.parent.GetComponentInParent<ObjectSounds>();
         animal = this.transform.parent.gameObject;
     }
 
@@ -30,6 +33,11 @@ public class NegotiableCollider : MonoBehaviour
     {
         if (isContent)
         {
+            if (!isAudioPlayed)
+            {
+                sounds.PlayAudioOnce(ClipName.NegotiationSuccess);
+                isAudioPlayed = true;
+            }
             StartCoroutine(requestedObj.GetComponent<SpriteFade>().FadeOut());
             StartCoroutine(animal.GetComponent<SpriteFade>().FadeOut());
             Invoke("FadeAway", 1f);

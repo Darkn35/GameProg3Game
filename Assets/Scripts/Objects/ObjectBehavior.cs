@@ -14,6 +14,7 @@ public class ObjectBehavior : MonoBehaviour
     public bool isBranch;
 
     public float sleepMultiplier;
+    private ObjectSounds sounds;
     [SerializeField] private SleepTimer sleepTimer;
     [SerializeField] private PlayerInteractionBehavior buttonUI;
 
@@ -28,6 +29,7 @@ public class ObjectBehavior : MonoBehaviour
         GameObject player = GameObject.Find("Player");
         sleepTimer = player.GetComponentInChildren<SleepTimer>();
         buttonUI = player.GetComponentInChildren<PlayerInteractionBehavior>();
+        sounds = GetComponent<ObjectSounds>();
 
         isInteractable = false;
         canBePicked = false;
@@ -39,14 +41,6 @@ public class ObjectBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (!isFruit && !isMushroom && !isNut)
-        //{
-        //    // branches, etc.
-        //}
-        //else
-        //{
-        //    DetectInput();
-        //}
         DetectInput();
     }
 
@@ -74,7 +68,6 @@ public class ObjectBehavior : MonoBehaviour
     void ConsumeFruit()
     {
         sleepTimer.itemTimeMultiplier = sleepMultiplier;
-        //this.GetComponent<ObjectTimer>().Init();
         this.gameObject.SetActive(false);
         Invoke("DestroyFruit", 2f);
     }
@@ -98,6 +91,14 @@ public class ObjectBehavior : MonoBehaviour
             {
                 HingeJoint2D hj = transform.gameObject.AddComponent(typeof(HingeJoint2D)) as HingeJoint2D;
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.relativeVelocity.magnitude > 7.5 && (collision.gameObject.tag.Equals("Branch") || collision.gameObject.tag.Equals("Ground")))
+        {
+            sounds.PlayAudioOnce(ClipName.ObjectFell);
         }
     }
 }

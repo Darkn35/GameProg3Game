@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class BirdPredatorBehavior : MonoBehaviour
 {
-    [Tooltip("Chance to perch or fly away.")]
-    public float probability;
+    [Header("Chance to perch or fly away.")]
+    [Range(0.01f, 1f)]
+    public float perchProbability;
+    [Range(0.01f, 1f)]
+    public float flyProbability;
     [Tooltip("Total number of cycles before destroyed or unactivated.")]
     public int numOfCycles;
     [Tooltip("Increases when it hits a waypoint.")]
     public int currentNum;
 
-    public float diveSpeed;
+    private float diveSpeed;
 
     [Header("Scripts")]
     [SerializeField] private BirdPredatorMovement birdPred;
@@ -29,17 +32,29 @@ public class BirdPredatorBehavior : MonoBehaviour
         
     }
 
-    public bool RandomChance()
+    public bool RandomChance(string typeOfProbability)
     {
         float x = Random.Range(0.01f, 1.0f);
 
-        if (x >= 0.0f && x <= probability)
+        if (x >= 0.0f && x <= ChooseProbability(typeOfProbability))
         {
             return true;
         }
         else
         {
             return false;
+        }
+    }
+
+    private float ChooseProbability(string typeOfProbability)
+    {
+        if (typeOfProbability == "perch")
+        {
+            return perchProbability;
+        }    
+        else
+        {
+            return flyProbability;
         }
     }
 
@@ -52,7 +67,7 @@ public class BirdPredatorBehavior : MonoBehaviour
             this.gameObject.SetActive(false);
         }
 
-        birdPred.isFlying = !RandomChance();
+        birdPred.isFlying = !RandomChance("perch");
     }
 
     public Vector3 targetPos(string actionName)

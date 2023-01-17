@@ -84,17 +84,6 @@ public class BranchCollision : MonoBehaviour
                 if (hitPos.normal.y < 0)
                 {
                     isPlayerHere = true;
-                    if (canSleep)
-                    {
-                        //UIFade.ShowUI();
-                        //timeSlider.StartTime();
-                    }
-                    else
-                    {
-                        //UIFade.HideUI();
-                        //timeSlider.ResetTime();
-                        //Debug.Log("Can't sleep");
-                    }
                     return;
                 }
             }
