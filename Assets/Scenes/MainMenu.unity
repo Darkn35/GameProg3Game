@@ -5229,7 +5229,7 @@ MonoBehaviour:
 
     Caitlin Belison
 
-    UI and Background Art, Game Concept
+    UI, Object, and Background Art, Game Concept
 
     Nina
     Gumba'
@@ -8188,7 +8188,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Hooze Off is a simulation game where the goal of the game is to make Hootze
-    the owl, successfully sleep for a short period of time, whilst being undisturbed.
+    the Owl, successfully sleep for a short period of time, whilst being undisturbed.
     There are various distractions that can scare and disturb the owl who''s trying
     to sleep. '
   m_isRightToLeft: 0
