@@ -15,17 +15,17 @@ public class RequestedObj : MonoBehaviour
         {
             case NegotiableBehavior.NegotiableAnimals.Squirrel:
                 {
-                    img.sprite = Resources.Load<Sprite>("Sprites/nut");
+                    img.sprite = Resources.Load<Sprite>("Sprites/NutAsset");
                 }
                 break;
             case NegotiableBehavior.NegotiableAnimals.Owl:
                 {
-                    img.sprite = Resources.Load<Sprite>("Sprites/branch");
+                    img.sprite = Resources.Load<Sprite>("Sprites/BranchAsset");
                 }
                 break;
             case NegotiableBehavior.NegotiableAnimals.Weasel:
                 {
-                    img.sprite = Resources.Load<Sprite>("Sprites/apple");
+                    img.sprite = Resources.Load<Sprite>("Sprites/AppleAsset");
                 }
                 break;
             default:

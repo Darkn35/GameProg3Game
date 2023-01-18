@@ -41,10 +41,10 @@ public class Timer : MonoBehaviour
                 isTimeRunning = false;
             }
         }
-        else if (!isTimeRunning && timeRemaining > 0)
-        {
-            DisplayTime(maxTime - timeRemaining);
-        }
+        //else if (!isTimeRunning && timeRemaining > 0)
+        //{
+        //    DisplayTime(maxTime - timeRemaining);
+        //}
     }
 
     void DisplayTime(float timeToDisplay)
