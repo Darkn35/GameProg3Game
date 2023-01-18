@@ -13,6 +13,7 @@ TagManager:
   - Negotiable
   - BirdPredFlip
   - Tree Trunk
+  - Wall
   layers:
   - Default
   - TransparentFX
