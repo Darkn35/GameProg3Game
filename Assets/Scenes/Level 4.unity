@@ -3183,6 +3183,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -33.23
       objectReference: {fileID: 0}
+    - target: {fileID: 6241765157999249322, guid: 52a1b25e378ab6249bef2dcc689fdd0f, type: 3}
+      propertyPath: sleepTime
+      value: 
+      objectReference: {fileID: 1386840685}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 52a1b25e378ab6249bef2dcc689fdd0f, type: 3}
 --- !u!4 &1663230733 stripped
