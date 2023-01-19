@@ -14,12 +14,14 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private SpriteRenderer spriteRenderer;
     private PlayerCollision playerCollision;
-    private ObjectAnimations playerAnim;
+    public ObjectAnimations playerAnim;
 
     public Transform interactionBox;
     public float offset;
 
     public float movementSpeed = 20.0f;
+
+    public bool isGameOver = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,12 +34,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        if(!isGameOver)
+        {
+            horizontal = Input.GetAxisRaw("Horizontal");
+            vertical = Input.GetAxisRaw("Vertical");
 
-        FlipSprite();
-        DiveCheck();
-
+            FlipSprite();
+            DiveCheck();
+        }
     }
 
     void DiveCheck() // Will optimize later

@@ -5,10 +5,15 @@ using UnityEngine;
 public class PlayerAnimationEvents : MonoBehaviour
 {
     private ObjectSounds sounds;
+    private SpriteRenderer spriteRenderer;
+    public SleepTimer timer;
+    public Sprite dozingSpriteOne;
+    public Sprite dozingSpriteTwo;
 
     private void Start()
     {
         sounds = GetComponent<ObjectSounds>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     public void FlapWings()

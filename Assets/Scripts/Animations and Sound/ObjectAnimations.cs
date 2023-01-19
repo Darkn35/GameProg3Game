@@ -28,4 +28,9 @@ public class ObjectAnimations : MonoBehaviour
     {
         animator.SetBool(anim, isTrue);
     }
+
+    public void SetAnimFloat(string anim, float value)
+    {
+        animator.SetFloat(anim, value);
+    }
 }

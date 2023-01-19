@@ -1595,6 +1595,32 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: pauseRetry
       objectReference: {fileID: 0}
+    - target: {fileID: 4294246697286110425, guid: cfda8d367324c5d4b92314fff6fa53d2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294246697286110426, guid: cfda8d367324c5d4b92314fff6fa53d2, type: 3}
+      propertyPath: m_text
+      value: 'You Win!
+
+        Thanks for Playing!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294246697286110426, guid: cfda8d367324c5d4b92314fff6fa53d2, type: 3}
+      propertyPath: m_fontSize
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294246697286110426, guid: cfda8d367324c5d4b92314fff6fa53d2, type: 3}
+      propertyPath: m_margin.x
+      value: -5.5628605
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294246697286110426, guid: cfda8d367324c5d4b92314fff6fa53d2, type: 3}
+      propertyPath: m_margin.z
+      value: -5.562855
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294246697286110426, guid: cfda8d367324c5d4b92314fff6fa53d2, type: 3}
+      propertyPath: m_fontSizeBase
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4294246697515200334, guid: cfda8d367324c5d4b92314fff6fa53d2, type: 3}
       propertyPath: probability
       value: 0.6
@@ -1772,7 +1798,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1203002029
 Transform:
   m_ObjectHideFlags: 0
@@ -2513,7 +2539,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1488316856
 Transform:
   m_ObjectHideFlags: 0

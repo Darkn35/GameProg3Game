@@ -33,6 +33,9 @@ public class SleepTimer : MonoBehaviour
         if (justLanded)
         {
             sleepTime = sleepTime + (Time.deltaTime * sleepTimeMultiplier * itemTimeMultiplier);
+            
+            player.playerAnim.SetAnimStateBool("isDozingOff", true);
+            player.playerAnim.SetAnimFloat("sleepTime", sleepTime * 0.1f);
         }
 
         if (!player.isMoving && justLanded)
@@ -42,10 +45,13 @@ public class SleepTimer : MonoBehaviour
         else
         {
             sleepTime = 0f;
+            player.playerAnim.SetAnimStateBool("isDozingOff", false);
         }
 
         if (slider.value == slider.maxValue && !isGameOver)
         {
+            player.playerAnim.SetAnimStateTrig("Sleeping");
+            player.isGameOver = true;
             winBehavior.Win();
             isGameOver = true;
         }
