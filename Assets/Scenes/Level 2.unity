@@ -1238,6 +1238,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: pauseRetry
       objectReference: {fileID: 0}
+    - target: {fileID: 4294246697286110425, guid: cfda8d367324c5d4b92314fff6fa53d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294246697392237378, guid: cfda8d367324c5d4b92314fff6fa53d2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4294246697515200334, guid: cfda8d367324c5d4b92314fff6fa53d2, type: 3}
       propertyPath: probability
       value: 0.6
