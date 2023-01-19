@@ -1145,6 +1145,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 808912863}
+    - target: {fileID: 4294246698771005758, guid: cfda8d367324c5d4b92314fff6fa53d2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4294246698771005759, guid: cfda8d367324c5d4b92314fff6fa53d2, type: 3}
       propertyPath: repeatTime
       value: 3
@@ -2213,7 +2217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1823933977}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.944, y: -6.3971725, z: 0}
+  m_LocalPosition: {x: -29.944, y: -6.3971725, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

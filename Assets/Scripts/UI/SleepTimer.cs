@@ -27,33 +27,36 @@ public class SleepTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        slider.value = sleepTime;
-
-        if (justLanded)
+        if (!isGameOver)
         {
-            sleepTime = sleepTime + (Time.deltaTime * sleepTimeMultiplier * itemTimeMultiplier);
-            
-            player.playerAnim.SetAnimStateBool("isDozingOff", true);
-            player.playerAnim.SetAnimFloat("sleepTime", sleepTime * 0.1f);
-        }
+            slider.value = sleepTime;
 
-        if (!player.isMoving && justLanded)
-        {
-            StartTime();
-        }
-        else
-        {
-            sleepTime = 0f;
-            player.playerAnim.SetAnimStateBool("isDozingOff", false);
-        }
+            if (justLanded)
+            {
+                sleepTime = sleepTime + (Time.deltaTime * sleepTimeMultiplier * itemTimeMultiplier);
 
-        if (slider.value == slider.maxValue && !isGameOver)
-        {
-            player.playerAnim.SetAnimStateTrig("Sleeping");
-            player.isGameOver = true;
-            winBehavior.Win();
-            isGameOver = true;
+                player.playerAnim.SetAnimStateBool("isDozingOff", true);
+                player.playerAnim.SetAnimFloat("sleepTime", sleepTime * 0.1f);
+            }
+
+            if (!player.isMoving && justLanded)
+            {
+                StartTime();
+            }
+            else
+            {
+                sleepTime = 0f;
+                player.playerAnim.SetAnimStateBool("isDozingOff", false);
+            }
+
+            if (slider.value == slider.maxValue)
+            {
+                player.playerAnim.SetAnimStateTrig("Sleeping");
+                player.isGameOver = true;
+                winBehavior.Win();
+                isGameOver = true;
+                slider.gameObject.SetActive(false);
+            }
         }
     }
     public void StartTime()
