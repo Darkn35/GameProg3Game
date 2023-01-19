@@ -7,5 +7,9 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Tree Trunk Flipped
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: a2285535bd51bd54b8cba9faef95e59b, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 38aa9da7a4848a64ea530d0327ed7607, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e1874ba019750424294a93d295f61743, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 48002cd04f9ae5946af731913df4a6ab, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5e0d950a60c26014ea3f7bd183df1b67, type: 2}
